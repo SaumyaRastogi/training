@@ -1,0 +1,54 @@
+  <h1>Student forms </h1>
+<form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin)">
+   <label>Name:<input type="text" name="Name" placeholder="Enter Name" ngModel #Name="ngModel" Name required></label>
+<br/>
+<div *ngIf="!Name.valid && Name.touched">
+  <p style="color:red;">Name required</p>
+</div>
+
+<label> RollNumber: <input type="text" name="RollNumber" placeholder="Enter Rollnumber" ngModel  #RollNumber="ngModel" required></label>
+<br/>
+<div *ngIf="!RollNumber.valid && RollNumber.touched">
+  <p style="color:red;">RollNumber required</p>
+</div>
+
+
+<label> Email: <input type="email" name="Email" placeholder="Enter Email" ngModel  #Email="ngModel" required></label>
+<br/>
+<div *ngIf="!Email.valid && Email.touched">
+  <p style="color:red;">Email required</p> 
+</div>
+
+<label> PhoneNumber: <input type="text" name="PhoneNumber" placeholder="Enter Phone Number" ngModel #PhoneNumber="ngModel" required></label>
+<br/>
+<div *ngIf="!PhoneNumber.valid && PhoneNumber.touched">
+  <p style="color:red;">PhoneNumber required</p>
+</div>
+
+<label> Branch: <input type="text" name="Branch" placeholder="Enter Branch" ngModel #Branch="ngModel" required></label>
+<br/>
+<div *ngIf="!Branch.valid && Branch.touched">
+  <p style="color:red;">Branch required</p>
+</div>
+
+<label>Section: <input type="text" name="Section" placeholder="Enter Section" ngModel #Section="ngModel" required></label>
+<br/>
+<div *ngIf="!Section.valid && Section.touched">
+  <p style="color:red;">Section required</p>
+</div>
+
+
+  <input type="checkbox" name="Agree" value="Agree" ngModel #Agree="ngModel" required> Agree<br/>
+  <div *ngIf="Agree.touched && !Agree.valid">
+    <p style="color:red;">Please agree all details are correct</p>
+  </div>
+  
+  <input type="Submit" value="Submit" [disabled] = "!reactiveform.valid">
+
+   
+   
+   
+  </form>
+
+  
+  
