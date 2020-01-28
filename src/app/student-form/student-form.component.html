@@ -1,4 +1,4 @@
-  <h1>Student forms </h1>
+  <h1>Student form using template approach</h1>
 <form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin)">
    <label>Name:<input type="text" name="Name" placeholder="Enter Name" ngModel #Name="ngModel" Name required></label>
 <br/>
@@ -43,7 +43,7 @@
     <p style="color:red;">Please agree all details are correct</p>
   </div>
   
-  <input type="Submit" value="Submit" [disabled] = "!reactiveform.valid">
+  <input type="Submit" value="Submit" [disabled] = "!userlogin.valid">
 
    
    

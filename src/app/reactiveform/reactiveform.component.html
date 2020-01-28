@@ -1,5 +1,4 @@
-<p>reactiveform works!</p>
-<h1>Student Login Reactive</h1>
+<h1>Student form using reactive approach</h1>
 <form [formGroup]="reactiveform" (ngSubmit)="PostData(reactiveform)">
 
   <!--<label>Name:</label>
@@ -73,7 +72,7 @@
  <div class="form-group">                    
 
   <input (click)="OnClick(isChecked)" type="checkbox" formControlName="isChecked"> I agree<br />
-  <div class="error" *ngIf="!isChecked">
+  <div class="error" *ngIf="isChecked" >
         <p style="color:red;">Please agree all details are correct</p>
       </div>
 </div>
