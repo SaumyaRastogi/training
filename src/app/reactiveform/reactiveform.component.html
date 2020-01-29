@@ -15,68 +15,75 @@
       <input type="text" placeholder="First Name" formControlName="Name">
     </label>
     <div class="error" *ngIf="reactiveform.get('Name').hasError('required') && reactiveform.get('Name').touched">
-            <p style="color:red;">Name required</p>
+      <p style="color:red;">Name required</p>
     </div>
   </div>
 
   <div class="form-group">
-        <label>
-          <span>Email</span>
-          <input type="email" placeholder="Email Name" formControlName="Email">
-        </label>
-        <div class="error" *ngIf="reactiveform.get('Email').hasError('required') && reactiveform.get('Email').touched">
-                <p style="color:red;">Email required</p>
-        </div>
-      </div>
-    
+    <label>
+      <span>Email</span>
+      <input type="email" placeholder="Email Name" formControlName="Email">
+    </label>
+    <div class="error" *ngIf="reactiveform.get('Email').hasError('required') && reactiveform.get('Email').touched">
+      <p style="color:red;">Email required</p>
+    </div>
+  </div>
 
-      <div class="form-group">
-            <label>
-              <span>Phone Number</span>
-              <input type="text" placeholder="Phone Number" formControlName="PhoneNumber">
-            </label>
-            <div class="error" *ngIf="reactiveform.get('PhoneNumber').hasError('required') && reactiveform.get('PhoneNumber').touched">
-                    <p style="color:red;">Phone Number required</p>
-            </div>
-          </div>
-          <div class="form-group">
-                <label>
-                  <span>Mother's Name</span>
-                  <input type="text" placeholder="Mother's Name" formControlName="MothersName">
-                </label>
-                <div class="error" *ngIf="reactiveform.get('MothersName').hasError('required') && reactiveform.get('MothersName').touched">
-                        <p style="color:red;">Mother's Name required</p>
-                </div>
-              </div>
-              <div class="form-group">
-                    <label>
-                      <span>Father's Name</span>
-                      <input type="text" placeholder="Father's Name" formControlName="FathersName">
-                    </label>
-                    <div class="error" *ngIf="reactiveform.get('FathersName').hasError('required') && reactiveform.get('FathersName').touched">
-                            <p style="color:red;">Father's Name required</p>
-                    </div>
-                  </div>  
-                  <div class="form-group">
-                        <label>
-                          <span>Address</span>
-                          <input type="text" placeholder="Address" formControlName="Address">
-                        </label>
-                        <div class="error" *ngIf="reactiveform.get('Address').hasError('required') && reactiveform.get('Address').touched">
-                                <p style="color:red;">Address required</p>
-                        </div>
-                      </div>  
 
- 
-                   
- <div class="form-group">                    
+  <div class="form-group">
+    <label>
+      <span>Phone Number</span>
+      <input type="text" placeholder="Phone Number" formControlName="PhoneNumber">
+    </label>
+    <div class="error"
+      *ngIf="reactiveform.get('PhoneNumber').hasError('required') && reactiveform.get('PhoneNumber').touched">
+      <p style="color:red;">Phone Number required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>
+      <span>Mother's Name</span>
+      <input type="text" placeholder="Mother's Name" formControlName="MothersName">
+    </label>
+    <div class="error"
+      *ngIf="reactiveform.get('MothersName').hasError('required') && reactiveform.get('MothersName').touched">
+      <p style="color:red;">Mother's Name required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>
+      <span>Father's Name</span>
+      <input type="text" placeholder="Father's Name" formControlName="FathersName">
+    </label>
+    <div class="error"
+      *ngIf="reactiveform.get('FathersName').hasError('required') && reactiveform.get('FathersName').touched">
+      <p style="color:red;">Father's Name required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>
+      <span>Address</span>
+      <input type="text" placeholder="Address" formControlName="Address">
+    </label>
+    <div class="error" *ngIf="reactiveform.get('Address').hasError('required') && reactiveform.get('Address').touched">
+      <p style="color:red;">Address required</p>
+    </div>
+  </div>
 
-  <input (click)="OnClick(isChecked)" type="checkbox" formControlName="isChecked"> I agree<br />
-  <div class="error" *ngIf="isChecked" >
-        <p style="color:red;">Please agree all details are correct</p>
-      </div>
-</div>
+
+<!--*************************-->
+<!--     Custom Validation     -->
+<!--*************************-->
+
+  <div class="form-group">
+
+    <input type="checkbox" name="agree" formControlName="agree"> I agree <br />
+    <div *ngIf="f.agree.errors && f.agree.dirty && f.agree.errors.unchecked">
+      <font color="red"> Please agree!!</font>
+
+    </div>
+  </div>
+
   <input type="submit" value="submit" [disabled]="!reactiveform.valid">
 
 </form>
-

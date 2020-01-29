@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, NgForm, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, NgForm, Validators, AbstractControl } from '@angular/forms';
+function CustomChecked(control: AbstractControl) {
+  console.log("here");
+  if (control.value == false) {
+    return { unchecked: true };
+  }
+  return null;
+}
 
 @Component({
   selector: 'app-reactiveform',
@@ -14,43 +21,40 @@ export class ReactiveformComponent implements OnInit {
   MothersName: string = "";
   FathersName: string = "";
   Address: string = "";
-  isChecked: boolean = false;
-
-
+  agree: boolean = true;
 
   constructor(private frmbuilder: FormBuilder) {
-    this.reactiveform = frmbuilder.group({
+  }
+
+  get f() {
+    return this.reactiveform.controls;
+  }
+
+  ngOnInit() {
+    this.reactiveform = this.frmbuilder.group({
       Name: ['', Validators.required],
       Email: ['', Validators.required, Validators.email],
       PhoneNumber: ['', Validators.required],
       MothersName: ['', Validators.required],
       FathersName: ['', Validators.required],
       Address: ['', Validators.required],
-      isChecked: ['', Validators.required],
-
+      agree: ['', [Validators.required, CustomChecked]]
     })
   }
 
-  ngOnInit() {
-  }
 
 
   PostData(reactiveform: any) {
-  this.Name = reactiveform.controls.Name.value;
+    this.Name = reactiveform.controls.Name.value;
     this.Email = reactiveform.controls.Email.value;
     this.PhoneNumber = reactiveform.controls.PhoneNumber.value;
     this.MothersName = reactiveform.controls.MothersName.value;
     this.FathersName = reactiveform.controls.FathersName.value;
     this.Address = reactiveform.controls.Address.value;
-    this.isChecked = reactiveform.controls.isChecked.value;
+    this.agree = reactiveform.controls.agree.value;
+
     console.log(reactiveform.controls);
 
-  }
-
-
-  OnClick(isValid: boolean): void {
-    this.isChecked = !isValid;
-    console.log(this.isChecked);
   }
 
 }

@@ -7,11 +7,13 @@ import { StudentFormComponent } from './student-form/student-form.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 // import { AppRoutingModule} from './app-routing.module';
 import {RouterModule,Route} from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
     StudentFormComponent,
     ReactiveformComponent
+    
   ],
   imports: [
     BrowserModule,
